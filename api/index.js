@@ -4,6 +4,10 @@ const bodyParser = require("body-parser");
 const app = express();
 app.use(bodyParser.json());
 
+app.get("/bfhl", (req, res) => {
+  res.json({ operation_code: 1 });
+});
+
 app.post("/bfhl", (req, res) => {
   try {
     const data = req.body.data || [];

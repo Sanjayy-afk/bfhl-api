@@ -30,11 +30,11 @@ app.post("/bfhl", (req, res) => {
         sum += num;
         if (num % 2 === 0) even_numbers.push(item);
         else odd_numbers.push(item);
-      } else if (/^[a-zA-Z]$/.test(item)) {
-        alphabets.push(item.toUpperCase());
-      } else {
-        special_characters.push(item);
-      }
+      } else if (/^[a-zA-Z]+$/.test(item)) {   
+  alphabets.push(item.toUpperCase());
+} else {
+  special_characters.push(item);
+}
     });
 
     // Reverse concatenation in alternating caps

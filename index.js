@@ -22,16 +22,13 @@ app.post("/bfhl", (req, res) => {
 
     data.forEach(item => {
       if (!isNaN(item)) { 
-        // Numbers
         const num = parseInt(item);
         sum += num;
         if (num % 2 === 0) even_numbers.push(item);
         else odd_numbers.push(item);
       } else if (/^[a-zA-Z]$/.test(item)) {
-        // Alphabets
         alphabets.push(item.toUpperCase());
       } else {
-        // Special characters
         special_characters.push(item);
       }
     });
@@ -42,7 +39,6 @@ app.post("/bfhl", (req, res) => {
       concat_string += idx % 2 === 0 ? ch.toUpperCase() : ch.toLowerCase();
     });
 
-    // Response
     res.json({
       is_success: true,
       user_id,
@@ -61,5 +57,5 @@ app.post("/bfhl", (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// ✅ Export app instead of listening (for Vercel/Serverless)
+module.exports = app;
